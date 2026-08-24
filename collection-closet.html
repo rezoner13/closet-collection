@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Collection Closet</title>
+<meta name="description" content="Track your comic book collection — issues, condition, value, and key issues." />
+
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIkNvbGxlY3Rpb24gQ2xvc2V0IiwgInNob3J0X25hbWUiOiAiQ29sbGVjdGlvbiBDbG9zZXQiLCAiZGVzY3JpcHRpb24iOiAiVHJhY2sgeW91ciBjb21pYyBib29rIGNvbGxlY3Rpb24gXHUyMDE0IGlzc3VlcywgY29uZGl0aW9uLCB2YWx1ZSwgYW5kIGtleSBpc3N1ZXMuIiwgInN0YXJ0X3VybCI6ICIuIiwgInNjb3BlIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI0VERTREMiIsICJ0aGVtZV9jb2xvciI6ICIjMUIxQjFCIiwgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBSUFBQURkdnZ0UUFBQUQzVWxFUVZSNG5PM2RNVTdqVUJTRzBUQ2lvNlJNUFIyN29XVjUwN0tiNlZnREpmMFVrU0lyRUVqODIrL2VlTTZwUmdNUzRlWExmWFlpbTd2OWZyK0R1WDVWUHdCdW00Q0lDSWlJZ0lnSWlJaUFpQWlJeVAyNUw3eCtQSTU4SFBUMy9QRCsrVDlOSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0puM3djNjU4czNBOWlTcTk0Q05JR0lDSWlJZ0lnSWlNalZCOUVyOGRudERCMU9hT29Ea3M1c2g2V3J6YWd5SU9rc29qYWpzbU1nOVN5cmFqM3J0N0NEMzMvL25QdlMyOVBMajkvemZ6cXVUS0dhQ1hUeWNsSEdQQ2ZyVmpLRTZrL2oxWk1vWDcyQ2dLWXZsUExmZndPbWF6aCtDTlZQSUc2YWdGcnJjSmo4UFFFUkVWQmZoL0hUZkFnSmlJaUFtcG9PbnM1RFNFQkVCRVJFUUIxOTNyUGE3bUlDSWlLZ2RzNE5tNTVEU0VCRUJFUkVRTDE4djA4MTNNVUVSRVJBalZ3eVlMb05JUUVSRVJBUkFYVngrZDdVYWhjVEVCRUJ0WER0VU9remhBUkVwTXVWcWJkdS9FZzQ5eE12dkxKbnFXdnBUYUJsM05ZRmJndmVpVUZBaTdtVmhwYTlqNGVBbHRTL29jWHZBdU1ZYUdHSGh2cWNKUjJ0ZEFNaEUyZ1YzVWJSZXJlZkV0QmEralMwNnMzTEJMU2lEZzJ0ZmVzN0FhMnJ0cUVCTjA0VTBPcXFHaHB6MjAwQmpUQytvV0UzYlhVYVA4aXcwL3ZCOS9zMWdZYnFjRmk5TEFHTnRyR0dCRlJnU3cwSmlJaUFpQWlvUU1PUFdtY1RFQkVCRVJFUUVRR050cVVEb0oyQUNBbUlpSUNJK0RSK3FLc09nSTZmZUhRK2JES0JtcHArWHRiNXN6TVRxSjB2YzJsN3RaQ0FHdmx4MGpUTXlCWTJ6dmRQL09YNzFQZmZPZmpQcHBwQTlXWWM0dlFaUlNaUXNlUUF1Y1BCdFFsVVpwR252M3dVQ1dpUTZYTzg5dVI0L1hnY2RtMkdMV3kwRHZ2T2dreWdjY2FrOC96d1B2SkV6QVFhWk9UZ0dYbHRvWUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUJRRTlQendmdnozMjlQTCtBZXdNZE0xbks3dEdQVVRTRU9KOHRXckNlamtoVksrQ2pmcVpOM0dqNS9kYm5jLy9rZCs2WktHZE5aUTJSWlc4bkxac0tyMXJKeEFoOS81OWVPeDhERnNRTzFMc1g0TGs5RnNIYVo0ZlVBSEhkYUNHZXBQNDdscEFpSWlJQ0lDSW5MMVFiVFRKYVpNSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0ozKy8yKytqRnd3MHdnSWdJaUlpQWlBaUlpSUNJQ0l2SVBiczNIaEtUQVBnZ0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBRDNVbEVRVlI0bk8zZE1VN2pVQlNHMFRDaW82Uk1QUjI3b1dWNTA3S2I2VmdESmYwVWtTSXJFRWo4MisvZWVNNnBSZ01TNGVYTGZYWWltN3Y5ZnIrRHVYNVZQd0J1bTRDSUNJaUlnSWdJaUlpQWlBaUl5UDI1TDd4K1BJNThIUFQzL1BEKytUOU5JQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSm4zd2M2NThzM0E5aVNxOTRDTklHSUNJaUlnSWdJaU1qVkI5RXI4ZG50REIxT2FPb0RrczVzaDZXcnphZ3lJT2tzb2phanNtTWc5U3lyYWozcnQ3Q0QzMy8vblB2UzI5UExqOS96ZnpxdVRLR2FDWFR5Y2xIR1BDZnJWaktFNmsvajFaTW9YNzJDZ0tZdmxQTGZmd09tYXpoK0NOVlBJRzZhZ0ZycmNKajhQUUVSRVZCZmgvSFRmQWdKaUlpQW1wb09uczVEU0VCRUJFUkVRQjE5M3JQYTdtSUNJaUtnZHM0Tm01NURTRUJFQkVSRVFMMTh2MDgxM01VRVJFUkFqVnd5WUxvTklRRVJFUkFSQVhWeCtkN1VhaGNURUJFQnRYRHRVT2t6aEFSRXBNdVZxYmR1L0VnNDl4TXZ2TEpucVd2cFRhQmwzTllGYmd2ZWlVRkFpN21WaHBhOWo0ZUFsdFMvb2NYdkF1TVlhR0dIaHZxY0pSMnRkQU1oRTJnVjNVYlJlcmVmRXRCYStqUzA2czNMQkxTaURnMnRmZXM3QWEycnRxRUJOMDRVME9xcUdocHoyMDBCalRDK29XRTNiWFVhUDhpdzAvdkI5L3MxZ1licWNGaTlMQUdOdHJHR0JGUmdTdzBKaUlpQWlBaW9RTU9QV21jVEVCRUJFUkVRRVFHTnRxVURvSjJBQ0FtSWlJQ0krRFIrcUtzT2dJNmZlSFErYkRLQm1wcCtYdGI1c3pNVHFKMHZjMmw3dFpDQUd2bHgwalRNeUJZMnp2ZFAvT1g3MVBmZk9malBwcHBBOVdZYzR2UVpSU1pRc2VRQXVjUEJ0UWxVWnBHbnYzd1VDV2lRNlhPODl1UjQvWGdjZG0yR0xXeTBEdnZPZ2t5Z2NjYWs4L3p3UHZKRXpBUWFaT1RnR1hsdG9ZQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQlFFOVB6d2Z2ejMyOVBMK0Fld01kTTFuSzd0R1BVVFNFT0o4dFdyQ2Vqa2hWSytDamZxWk4zR2o1L2RibmMvL2tkKzZaS0dkTlpRMlJaVzhuTFpzS3Ixckp4QWg5LzU5ZU94OERGc1FPMUxzWDRMazlGc0hhWjRmVUFISGRhQ0dlcFA0N2xwQWlJaUlDSUNJbkwxUWJUVEphWk1JQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSjMrLzIrK2pGd3cwd2dJZ0lpSWlBaUFpSWlJQ0lDSXZJUGJzM0hoS1RBUGdnQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogIm1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQUxyRWxFUVZSNG5PM2R2WExiNWhaQVVlYU9PNWNxWGF2TDI3ak40Nm5WMjZqTE03aFVuNEozRk1XV2FCRC93RjZyOG1SaW13VytzM0ZBaXY3ajI3ZHZGd0I2L3JmMUN3QmdHd0lBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRVBWbDR1OS9mbjJZNVhVQU1NTDNyejlHLzE0YkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFVGYxSDRTZWE4czhaQTV6QTgrdkRWbisxRFFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnYXVOdkF3M2E4SnYvWVA5OFEvQ2FCR0FOaGo0TTlQNndpTUhTQkdCWlJqK01kajArTXJBY0FWaUswUSt6a0lIbENNRDhqSDZZblF3c3dhZUFabWI2dzNLY3Iza0p3SnhjbmJBMHAyeEdBakFiMXlXc3cxbWJpd0RNd3hVSmEzTGlaaUVBTTNBdHd2cWN1K2tFWUNwWElXekY2WnRJQUNaeC9jRzJuTUVwL0J6QUJoNWZua2IvM3IvLy9HdWhQeGsyZC92eVpuWUNNTjY5dHg2bU05ejJka2J1S3NIejY0TWZFQnZISTZDVm1QNHduUE95RGh2QVNNTnYvMTNLTU1MMTRBeGNCU3dCNDlnQWxtWDZ3eFJPMEtJRVlBd2ZQSUM5Y1NwSEVJQUZ1WG1CNlp5ajVRakFVbHkxTUJlbmFTRUNBQkFsQUhmenFCSDJ5ZG04bHdBc3dzWUs4M0ttbGlBQUFGRUNBQkFsQU1Cc2ZKdmJzUWdBUUpRQUFQTzQzdjViQWc1RUFBQ2lCQUNZd2ZzYmYwdkFVUWdBUUpRQUFFUUpBRERWcjg5OFBBVTZCQUVBaUJJQVlKTFBidll0QWZzbkFBQlJBZ0NNZC9zMjN4S3djd0lBRUNVQUFGRUNBSXcwNUFtUHAwQjdKZ0FBVVFJQWpESDgxdDRTc0ZzQ0FCQWxBQUJSQWdEYzdkNm5PcDRDN1pNQUFFUUpBSENmY2JmemxvQWRFZ0NBS0FFQTdqRGxSdDRTc0RjQ0FCQWxBQUJSQWdBTU5mMFpqcWRBdXlJQUFGRUNBQXd5MTgyN0pXQS9CQUFnU2dBQW9nUUErTDE1bjl0NENyUVRBZ0FRSlFEQWJ5eHh3MjRKMkFNQkFJZ1NBT0NXNVc3VkxRR2JFd0NBS0FFQWlCSUE0Rk5MUDZYeEZHaGJBZ0FRSlFEQXg5YTVQYmNFYkVnQUFLSUVBQ0JLQUlBUHJQbGt4bE9nclFnQVFKUUFBRDliLzViY0VyQUpBUUNJRWdEZ1A3YTZHYmNFckU4QUFLSUVBQ0JLQUlCL2Jmc2N4bE9nbFFrQVFKUUFBUCszaHh2d1BieUdEZ0VBaVBxeTlRc0Fsblc0ZStyRHZlRGpFZ0E0SkZQeVE4K3ZEeC8rOSs5ZmY2ejhTZzVCQUdCSGpQV0ZmQmFHWDZWU0lRQ3dPR1A5UUZLcDhDWXdMTzd4NVducmw4RE1UakQ5THdJQTY5Q0FNem5IOUw4SUFLeEdBODdoTk5QLzRqMEFXTk8xQWQ0U09LZ3pqZjRyR3dDc3pTcHdST2ViL2hjQmdFMW93TEdjY3ZwZkJBQzJvZ0ZIY2RicGZ4RUEySkFHN04rSnAvOUZBR0JiR3JCbjU1NytGNThDZ3MzNWFOQU9uWDcwWDlrQVlCZXNBdnNSbWY0WEFZRDkwSUE5NkV6L2l3REFybWpBdGxMVC95SUFzRGNhc0pYYTlMOElBT3lRQnF3dk9QMHZQZ1VFKytTalFhdHBqdjRyR3dEc2wxVmdhZVhwZnhFQTJEa05XRTU4K2w4RUFQWlBBNVpnK2w4RUFBNUJBK1psK2w4SkFCeURCc3pGOUgvalUwQndHRDRhTkpIUi94TWJBQnlNVldBYzAvOVhBZ0RIb3dIM012MC9KQUJ3U0Jvd25Pbi9HUUdBbzlLQUlVei9Hd1FBRGt3RGJqUDliL01wSURnMkh3MzZrTkUvaEEwQXpzQXE4SjdwUDVBQXdFbG93SlhwUDV3QXdIbG9nT2wvRndHQVU5RUFoaE1BT0JzTllDQUJnQk42ZkhtU0FYNUxBT0MwTklEYkJBRE9UQU80UVFEZzVEU0F6d2dBUUpRQUFFUUpBSnljcnduaU13SUFFQ1VBQUZFQ0FCQWxBSEJtM2dEZ0JnRUFpQklBZ0NnQkFJZ1NBRGd0YndCd213QUFSQWtBUUpRQUFFUUpBSnlUTndENExRRUFpQklBZ0NnQkFJZ1NBSUFvQVlBVDhnNHdRd2dBUUpRQUFFUUpBRUNVQU1EWmVBT0FnUVFBSU9yTDFpOEFPSW5IbDZmckw2d2dSMkVEQUdid052MS8ralY3WmdPQVUxbi83dnZEY1gvOWoxYUJuYk1CQU9QZHZ0bTNDdXljRFFBWVkrQnd0d3JzbVFBQTl4bHhYeThEKytRUkVKekhDaE4yeWxPZEZaNElQYjgrTFAxWG5Ja05BQmhrbHZGdEZkZ1ZHd0R3ZS9QZXZIdHplQ2RzQU1BdEN3MXJxOEFlQ0FDY3hPekRkSVg3OUNVeThQejY4UDNyanhuL3dCUHpDQWo0d0pwUGFUd1Iyb29OQVBpUFRjYXhKMEtic0FFQS85cjJadHdxc0RJYkFIQzU3R2I0V2dYV0pBQndCbE1tNWs1Ry8zc1RNK0I5NElFOEFvSzBIVTcvTjN0K2JlZGdBNENvUTR4WFQ0UVdaUU9Bb2tOTS96ZkhlclVISWdCd2VIZmRJRCsrUEIxeG50NzdtbjByM0JBZUFVSEZFZWMraTdJQlFJTHB6NjlzQUhCeVJqK2ZzUUhBc2QxK0E2QTgvYjBOOEZzMkFEaW44dWhuSUFHQXN6SDZHY2dqSURnVjA1L2hiQUJ3WU8vZkFERDZMNWZMOVN1QTNwNysrMUtnMjJ3QWNBYW0vM3VHL2tBMkFEZzJvLzlEUDYwQ2ZNZ0dBQWRtK3Q5bUZiaE5BQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVZQkYvLy9uWDFpOEJUc1daV29JQTNPMzcxeDlidndUZ0E4N212UVFBSUVvQWxtSmpoYms0VFFzUmdBVzVhbUU2NTJnNUFqQ0dSNDJ3TjA3bENBS3dMRGN2TUlVVHRLZ3ZXNytBby9yKzljZno2OE9RLy9ONkJUKytQQzM4aXVCVTdocjlidi9Ic1FHc3hJME1ET2U4ck1NR01ON3dKZURxN1pxMkRjQ0h4czE5dC8rakNjQUdscnU3Y2Q4RURPY1IwQ1J1UFdCYnp1QVVBakNWNncrMjR2Uk5KQUF6Y0JYQytweTc2UVJnSHE1RldKTVROd3NCbUkwckV0YmhyTTFGQU9ia3VvU2xPV1V6RW9DWnVUcGhPYzdYdlB3Y3dQeXUxK2hkUHlNRzNHYjBMMEVBbGlJRE1BdWpmemtDc0N3WmdOR00vcVVKd0JyZVg4ZGlBRGNZK21zU2dMVzV2b0dkOENrZ2dDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0tpTnZ3M1VkeU1EYk1VR0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSZjN6NzltM3Ixd0RBQm13QUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGSC9BSWZJK3J6Q0dVOVVBQUFBQUVsRlRrU3VRbUNDIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FJQUFBQjdHa090QUFBTHJFbEVRVlI0bk8zZHZYTGI1aFpBVWVhT081Y3FYYXZMMjdqTjQ2blYyNmpMTTdoVW40SjNGTVdXYUJEL3dGNnI4bVJpbXdXK3MzRkFpdjdqMjdkdkZ3QjYvcmYxQ3dCZ0d3SUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFUFZsNHU5L2ZuMlk1WFVBTU1MM3J6OUcvMTRiQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVUZjFINFNlYThzOFpBNXpBOCt2RFZuKzFEUUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdhdU52QXczYThKdi9ZUDk4US9DYUJHQU5oajRNOVA2d2lNSFNCR0JaUmorTWRqMCtNckFjQVZpSzBRK3prSUhsQ01EOGpINlluUXdzd2FlQVptYjZ3M0tjcjNrSndKeGNuYkEwcDJ4R0FqQWIxeVdzdzFtYml3RE13eFVKYTNMaVppRUFNM0F0d3ZxY3Ura0VZQ3BYSVd6RjZadElBQ1p4L2NHMm5NRXAvQnpBQmg1Zm5rYi8zci8vL0d1aFB4azJkL3Z5Wm5ZQ01ONjl0eDZtTTl6MmRrYnVLc0h6NjRNZkVCdkhJNkNWbVA0d25QT3lEaHZBU01Odi8xM0tNTUwxNEF4Y0JTd0I0OWdBbG1YNnd4Uk8wS0lFWUF3ZlBJQzljU3BIRUlBRnVYbUI2WnlqNVFqQVVseTFNQmVuYVNFQ0FCQWxBSGZ6cUJIMnlkbThsd0Fzd3NZSzgzS21saUFBQUZFQ0FCQWxBTUJzZkp2YnNRZ0FRSlFBQVBPNDN2NWJBZzVFQUFDaUJBQ1l3ZnNiZjB2QVVRZ0FRSlFBQUVRSkFERFZyODk4UEFVNkJBRUFpQklBWUpMUGJ2WXRBZnNuQUFCUkFnQ01kL3MyM3hLd2N3SUFFQ1VBQUZFQ0FJdzA1QW1QcDBCN0pnQUFVUUlBakRIODF0NFNzRnNDQUJBbEFBQlJBZ0RjN2Q2bk9wNEM3Wk1BQUVRSkFIQ2ZjYmZ6bG9BZEVnQ0FLQUVBN2pEbFJ0NFNzRGNDQUJBbEFBQlJBZ0FNTmYwWmpxZEF1eUlBQUZFQ0FBd3kxODI3SldBL0JBQWdTZ0FBb2dRQStMMTVuOXQ0Q3JRVEFnQVFKUURBYnl4eHcyNEoyQU1CQUlnU0FPQ1c1VzdWTFFHYkV3Q0FLQUVBaUJJQTRGTkxQNlh4RkdoYkFnQVFKUURBeDlhNVBiY0ViRWdBQUtJRUFDQktBSUFQclBsa3hsT2dyUWdBUUpRQUFEOWIvNWJjRXJBSkFRQ0lFZ0RnUDdhNkdiY0VyRThBQUtJRUFDQktBSUIvYmZzY3hsT2dsUWtBUUpRQUFQKzNoeHZ3UGJ5R0RnRUFpUHF5OVFzQWxuVzRlK3JEdmVEakVnQTRKRlB5UTgrdkR4Lys5KzlmZjZ6OFNnNUJBR0JIalBXRmZCYUdYNlZTSVFDd09HUDlRRktwOENZd0xPN3g1V25ybDhETVRqRDlMd0lBNjlDQU16bkg5TDhJQUt4R0E4N2hOTlAvNGowQVdOTzFBZDRTT0tnempmNHJHd0NzelNwd1JPZWIvaGNCZ0Uxb3dMR2NjdnBmQkFDMm9nRkhjZGJwZnhFQTJKQUc3TitKcC85RkFHQmJHckJuNTU3K0Y1OENnczM1YU5BT25YNzBYOWtBWUJlc0F2c1JtZjRYQVlEOTBJQTk2RXovaXdEQXJtakF0bExUL3lJQXNEY2FzSlhhOUw4SUFPeVFCcXd2T1AwdlBnVUUrK1NqUWF0cGp2NHJHd0RzbDFWZ2FlWHBmeEVBMkRrTldFNTgrbDhFQVBaUEE1WmcrbDhFQUE1QkErWmwrbDhKQUJ5REJzekY5SC9qVTBCd0dENGFOSkhSL3hNYkFCeU1WV0FjMC85WEFnREhvd0gzTXYwL0pBQndTQm93bk9uL0dRR0FvOUtBSVV6L0d3UUFEa3dEYmpQOWIvTXBJRGcySHczNmtORS9oQTBBenNBcThKN3BQNUFBd0Vsb3dKWHBQNXdBd0hsb2dPbC9Gd0dBVTlFQWhoTUFPQnNOWUNBQmdCTjZmSG1TQVg1TEFPQzBOSURiQkFET1RBTzRRUURnNURTQXp3Z0FRSlFBQUVRSkFKeWNyd25pTXdJQUVDVUFBRkVDQUJBbEFIQm0zZ0RnQmdFQWlCSUFnQ2dCQUlnU0FEZ3Rid0J3bXdBQVJBa0FRSlFBQUVRSkFKeVROd0Q0TFFFQWlCSUFnQ2dCQUlnU0FJQW9BWUFUOGc0d1F3Z0FRSlFBQUVRSkFFQ1VBTURaZUFPQWdRUUFJT3JMMWk4QU9JbkhsNmZyTDZ3Z1IyRURBR2J3TnYxLytqVjdaZ09BVTFuLzd2dkRjWC85ajFhQm5iTUJBT1BkdnRtM0N1eWNEUUFZWStCd3R3cnNtUUFBOXhseFh5OEQrK1FSRUp6SENoTjJ5bE9kRlo0SVBiOCtMUDFYbklrTkFCaGtsdkZ0RmRnVkd3RHdlL1Bldkh0emVDZHNBTUF0Q3cxcnE4QWVDQUNjeE96RGRJWDc5Q1V5OFB6NjhQM3JqeG4vd0JQekNBajR3SnBQYVR3UjJvb05BUGlQVGNheEowS2JzQUVBLzlyMlp0d3FzREliQUhDNTdHYjRXZ1hXSkFCd0JsTW01azVHLzNzVE0rQjk0SUU4QW9LMEhVNy9OM3QrYmVkZ0E0Q29RNHhYVDRRV1pRT0Fva05NL3pmSGVyVUhJZ0J3ZUhmZElEKytQQjF4bnQ3N21uMHIzQkFlQVVIRkVlYytpN0lCUUlMcHo2OXNBSEJ5UmorZnNRSEFzZDErQTZBOC9iME44RnMyQURpbjh1aG5JQUdBc3pINkdjZ2pJRGdWMDUvaGJBQndZTy9mQURENkw1Zkw5U3VBM3A3KysxS2cyMndBY0FhbS8zdUcva0EyQURnMm8vOURQNjBDZk1nR0FBZG0rdDltRmJoTkFBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRVlCRi8vL25YMWk4QlRzV1pXb0lBM08zNzF4OWJ2d1RnQTg3bXZRUUFJRW9BbG1KamhiazRUUXNSZ0FXNWFtRTY1Mmc1QWpDR1I0MndOMDdsQ0FLd0xEY3ZNSVVUdEtndlc3K0FvL3IrOWNmejY4T1EvL042QlQrK1BDMzhpdUJVN2hyOWJ2L0hzUUdzeEkwTURPZThyTU1HTU43d0plRHE3WnEyRGNDSHhzMTl0LytqQ2NBR2xydTdjZDhFRE9jUjBDUnVQV0JienVBVUFqQ1Y2dysyNHZSTkpBQXpjQlhDK3B5NzZRUmdIcTVGV0pNVE53c0JtSTByRXRiaHJNMUZBT2JrdW9TbE9XVXpFb0NadVRwaE9jN1h2UHdjd1B5dTEraGRQeU1HM0diMEwwRUFsaUlETUF1amZ6a0NzQ3daZ05HTS9xVUp3QnJlWDhkaUFEY1krbXNTZ0xXNXZvR2Q4Q2tnZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnS2lOdnczVWR5TURiTVVHQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJmM3o3OW0zcjF3REFCbXdBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZIL0FJZkkrcnpDR1U5VUFBQUFBRWxGVGtTdVFtQ0MiLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogIm1hc2thYmxlIn1dfQ==" />
+<meta name="theme-color" content="#1B1B1B" />
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADlklEQVR4nO3dMU7jUBSG0TCio6RMPR27oWV507Kb6WYNlPRTREJRyJ84we/eFzinQhFSgvNx7Wdic7fdbjdwzK/uF8C8xEEkDiJxEImDSBxE90cffX1/LH4dtHt+eDt4xOQgEgeROIjEQSQOInEQHV/KHvV5qcONWniqwuQgEgeROIjEQSQOogtWK4P4I98JvSvEzjhkcdZuE3Ul0hOHLC7SlUjDMYcyrlO/3fqPOX7//XP08X9PL6e/4Sf42AgtqifHQf4/+Y1f4mD7FA+PzqWsMpZo3EqlceyHr4zl9rdV5fBwEqxf74HFCeIgEkez3diYc3iIg0gcnfYHxoTDQxxE4mjzeVTMNjzEQSQOInH0SHuQqfYs4iASR4PT42Ge4SEOInEQiaPakr3GJHsWcRCJo9TykTDD8BAHkTjqXDoM2oeHOIj6r1u5OZW/0Eefa8lnjFe5PM7kuNj8n5tf68JJcVxj5j5WvKRWHFeas491L7Z2zHG9XR/ta4qdEdfgmxxfNcMIGXR3BnGsoLePcfftEMc6uvoYekcXcaymvo/R9/oRx5oq+yi4C5TVysoKljBlNwczOYaYYQnzdeIY5Rv0IY6Bbr0PcRCJY6BJzqxfTRxE4iASB5E4Rrn1A46NODhBHETiIPKHtyGWH3B8nEWd8BjF5Oi0f359wnPtJkePoylM9YnljTjqnZ0Q8yQijvWl9/WiHceJRF7fH2s+7+OYo8h1hxS9ByImx3BffIMb9zLiGGjCBchF7FZWVvMfT2v+05vJsb7RA+P54a0mDpNjZTW7EqsVmomDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDqLSOJ4f3j6+/vf0UvnUN21/W+1vw9E6J4c+lmjcStVxHISvj9MOtk/l2NhsNveVT3bU2T4E1KVht1Kc/7dRv916Jsfu53x9f2x59pvT9evUuVuRyFm9U7b/mMNeZlpOghGJg0gcROIgEgfRBasVa86fxuQgEgeROIjEQSQOInEQ3W232+7XwKRMDiJxEImDSBxE4iD6D2udwUqgrc+DAAAAAElFTkSuQmCC" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Collection Closet" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #EDE4D2;
+  color: #1B1B1B;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.hidden { display: none !important; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+#app { min-height: 100vh; padding-bottom: 6rem; }
+
+.halftone {
+  background-image: radial-gradient(circle, #1B1B1B 1px, transparent 1.4px);
+  background-size: 7px 7px;
+}
+.stamp { transform: rotate(-8deg); }
+
+.grade-mint, .grade-near-mint { background:#1B7A3D; }
+.grade-very-fine, .grade-fine { background:#B8860B; }
+.grade-very-good, .grade-good { background:#C8102E; }
+.grade-fair, .grade-poor { background:#5A5A5A; }
+
+/* Header */
+.header {
+  position: relative;
+  overflow: hidden;
+  background: #1B1B1B;
+  color: #EDE4D2;
+  padding: 2rem 1.25rem 1.5rem;
+}
+.header-inner { position: relative; display: flex; align-items: center; justify-content: space-between; }
+.header h1 {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.02em;
+  font-size: 2.25rem;
+  line-height: 1;
+  margin: 0;
+  color: #C8102E;
+  text-shadow: 2px 2px 0 #EDE4D2;
+}
+.header .tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+.stats-strip { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1.5rem; }
+.stat-box {
+  background: #EDE4D2; color: #1B1B1B; border-radius: 2px; padding: 0.5rem;
+  text-align: center; border: 2px solid #1B1B1B;
+}
+.stat-box .num { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 700; }
+.stat-box .lbl { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+
+.toast-error {
+  margin: 1rem 1.25rem 0; font-size: 0.75rem; background: #C8102E; color: white;
+  border-radius: 2px; padding: 0.5rem 0.75rem;
+}
+
+/* Controls */
+.controls { padding: 1.25rem 1.25rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.search-wrap { position: relative; }
+.search-wrap svg { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+.search-wrap input {
+  width: 100%; background: #FAF7EF; border: 2px solid #1B1B1B; border-radius: 2px;
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem; font-size: 0.875rem; outline: none;
+}
+.search-wrap input:focus { border-color: #C8102E; }
+.filter-row { display: flex; align-items: center; gap: 0.5rem; overflow-x: auto; }
+.filter-row select {
+  background: #FAF7EF; border: 2px solid #1B1B1B; border-radius: 2px; padding: 0.4rem 0.5rem;
+  font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+}
+.key-toggle {
+  flex-shrink: 0; display: flex; align-items: center; gap: 0.25rem; border: 2px solid #1B1B1B;
+  border-radius: 2px; padding: 0.4rem 0.5rem; font-size: 0.75rem; font-weight: 600; background: #FAF7EF;
+}
+.key-toggle.active { background: #C8102E; color: white; }
+
+/* List */
+.list-wrap { padding: 1.25rem; }
+.empty-state { text-align: center; padding: 4rem 1rem; border: 2px dashed rgba(27,27,27,0.3); border-radius: 2px; }
+.empty-state svg { opacity: 0.4; margin-bottom: 0.75rem; }
+.empty-title { font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; }
+.empty-sub { font-size: 0.75rem; opacity: 0.6; margin-top: 0.25rem; }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+.card {
+  position: relative; background: #FAF7EF; border: 2px solid #1B1B1B; border-radius: 2px;
+  padding: 1rem; overflow: hidden;
+}
+.card-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 2px; border: 2px solid #1B1B1B; margin-bottom: 0.75rem; }
+.key-badge {
+  position: absolute; top: -4px; right: -4px; background: #C99A3F; border: 2px solid #1B1B1B;
+  border-radius: 999px; width: 3.5rem; height: 3.5rem; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.key-badge span { font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; font-weight: 700; margin-top: 0.125rem; }
+.card-title-wrap { padding-right: 2.5rem; }
+.card-title { font-family: 'Archivo Black', sans-serif; font-size: 1rem; line-height: 1.2; margin: 0; }
+.card-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; opacity: 0.7; margin: 0.25rem 0 0; }
+.card-pub { font-size: 0.75rem; opacity: 0.6; margin: 0.125rem 0 0; }
+.card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
+.grade-pill { color: white; font-size: 0.625rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 2px; font-family: 'JetBrains Mono', monospace; }
+.card-value { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; display: flex; align-items: center; gap: 0.125rem; }
+.card-notes { font-size: 0.75rem; opacity: 0.7; margin-top: 0.5rem; border-top: 1px solid rgba(27,27,27,0.15); padding-top: 0.5rem; }
+.card-actions { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
+.btn-edit, .btn-delete, .btn-confirm-delete {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.25rem;
+  font-size: 0.75rem; border: 2px solid #1B1B1B; border-radius: 2px; padding: 0.4rem; font-weight: 600;
+  background: #FAF7EF; transition: background 0.15s, color 0.15s;
+}
+.btn-edit:hover { background: #1B1B1B; color: #EDE4D2; }
+.btn-delete { flex: 0 0 auto; padding: 0.4rem 0.75rem; }
+.btn-delete:hover { background: #C8102E; border-color: #C8102E; color: white; }
+.btn-confirm-delete { background: #C8102E; border-color: #C8102E; color: white; }
+
+/* Floating buttons */
+.fab-wrap { position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem; z-index: 30; }
+.fab-scan {
+  background: #1B1B1B; color: #EDE4D2; border-radius: 999px; width: 3rem; height: 3rem;
+  display: flex; align-items: center; justify-content: center; border: 2px solid #1B1B1B;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.fab-scan:disabled { opacity: 0.6; }
+.fab-add {
+  background: #C8102E; color: white; border-radius: 999px; width: 3.5rem; height: 3.5rem;
+  display: flex; align-items: center; justify-content: center; border: 2px solid #1B1B1B;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.fab-scan:active, .fab-add:active { transform: scale(0.95); }
+
+.toast {
+  position: fixed; bottom: 6.5rem; left: 50%; transform: translateX(-50%);
+  background: #1B1B1B; color: #EDE4D2; border-radius: 2px; padding: 0.5rem 1rem; font-size: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem; border: 2px solid #1B1B1B; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 40;
+}
+.toast-scan-error {
+  position: fixed; bottom: 6.5rem; left: 1.25rem; right: 1.25rem;
+  background: #C8102E; color: white; border-radius: 2px; padding: 0.5rem 1rem; font-size: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem; border: 2px solid #1B1B1B; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 40;
+}
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: flex-end;
+  justify-content: center; z-index: 50;
+}
+@media (min-width: 640px) { .modal-overlay { align-items: center; padding: 1.25rem; } }
+.modal {
+  background: #EDE4D2; width: 100%; max-height: 90vh; overflow-y: auto;
+  border-top: 2px solid #1B1B1B; border-radius: 16px 16px 0 0;
+}
+@media (min-width: 640px) { .modal { max-width: 28rem; border: 2px solid #1B1B1B; border-radius: 2px; } }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;
+  border-bottom: 2px solid #1B1B1B; position: sticky; top: 0; background: #EDE4D2;
+}
+.modal-header h2 { font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; margin: 0; }
+.modal-close { background: none; border: none; padding: 0.25rem; display: flex; }
+.modal-form { padding: 1rem 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.field label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; opacity: 0.7; display: block; margin-bottom: 0.25rem; }
+.field input, .field select, .field textarea {
+  width: 100%; background: #FAF7EF; border: 2px solid #1B1B1B; border-radius: 2px; padding: 0.5rem 0.75rem;
+  font-size: 0.875rem; outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: #C8102E; }
+.field textarea { resize: none; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.checkbox-row { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; user-select: none; }
+.checkbox-row input { width: 1rem; height: 1rem; accent-color: #C8102E; }
+.checkbox-row span { font-size: 0.875rem; font-weight: 600; }
+.submit-btn {
+  width: 100%; background: #C8102E; color: white; border: 2px solid #1B1B1B; border-radius: 2px;
+  padding: 0.75rem; margin-top: 0.25rem; font-family: 'Archivo Black', sans-serif; letter-spacing: 0.02em;
+}
+
+.scan-box {
+  display: flex; align-items: center; gap: 0.75rem; background: #FAF7EF;
+  border: 2px dashed rgba(27,27,27,0.4); border-radius: 2px; padding: 0.75rem;
+}
+.scan-preview { width: 3.5rem; height: 5rem; object-fit: cover; border-radius: 2px; border: 2px solid #1B1B1B; flex-shrink: 0; }
+.scan-placeholder {
+  width: 3.5rem; height: 5rem; border-radius: 2px; border: 2px solid rgba(27,27,27,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.scan-placeholder svg { opacity: 0.3; }
+.scan-info { flex: 1; }
+.scan-info p { font-size: 0.75rem; font-weight: 600; margin: 0; }
+.scan-btn {
+  margin-top: 0.375rem; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.75rem;
+  font-weight: 600; border: 2px solid #1B1B1B; border-radius: 2px; padding: 0.25rem 0.5rem; background: #EDE4D2;
+}
+.scan-btn:disabled { opacity: 0.5; }
+.scan-err { font-size: 0.6875rem; color: #C8102E; margin-top: 0.25rem; }
+
+/* Settings */
+.settings-link { font-size: 0.6875rem; text-decoration: underline; opacity: 0.6; background: none; border: none; padding: 0; }
+.settings-body { padding: 1rem 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.settings-note { font-size: 0.75rem; opacity: 0.75; line-height: 1.4; }
+
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<input id="cover-file-input" type="file" accept="image/*" capture="environment" class="hidden" />
+
+<script>
+// ---------- Icons (minimal inline SVG, lucide-style) ----------
+const ICONS = {
+  plus: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+  x: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  search: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  star: (filled) => `<svg width="12" height="12" viewBox="0 0 24 24" fill="${filled ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  trash: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>',
+  pencil: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>',
+  book: (size=32) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+  dollar: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+  award: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>',
+  camera: (size=20) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  loader: (size=20) => `<svg class="spin" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>`,
+  alert: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+  gear: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>'
+};
+
+const GRADES = ['Mint', 'Near Mint', 'Very Fine', 'Fine', 'Very Good', 'Good', 'Fair', 'Poor'];
+const GRADE_SHORT = { 'Mint':'MT','Near Mint':'NM','Very Fine':'VF','Fine':'FN','Very Good':'VG','Good':'GD','Fair':'FR','Poor':'PR' };
+const emptyForm = () => ({ title:'', issueNumber:'', publisher:'', year:'', grade:'Near Mint', value:'', keyIssue:false, notes:'', coverImage:null });
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function gradeClass(grade) { return 'grade-' + (grade || 'good').toLowerCase().replace(/ /g, '-'); }
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+// ---------- IndexedDB storage ----------
+const DB_NAME = 'collection-closet-db';
+const STORE = 'comics';
+let dbPromise = null;
+
+function getDB() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(STORE)) {
+        db.createObjectStore(STORE, { keyPath: 'id' });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+  return dbPromise;
+}
+
+async function dbGetAll() {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readonly');
+    const req = tx.objectStore(STORE).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function dbPut(comic) {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).put(comic);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function dbDelete(id) {
+  const db = await getDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+// ---------- App state ----------
+const state = {
+  comics: [],
+  loading: true,
+  storageError: false,
+  showForm: false,
+  showSettings: false,
+  editingId: null,
+  form: emptyForm(),
+  query: '',
+  keyOnly: false,
+  sortBy: 'added',
+  confirmDeleteId: null,
+  scanning: false,
+  scanError: '',
+  scannedPreview: null,
+  apiKey: localStorage.getItem('cc-api-key') || ''
+};
+
+function setState(patch) {
+  Object.assign(state, patch);
+  render();
+}
+
+function render() {
+  const active = document.activeElement;
+  const activeId = active && active.id;
+  const selStart = active && typeof active.selectionStart === 'number' ? active.selectionStart : null;
+  const selEnd = active && typeof active.selectionEnd === 'number' ? active.selectionEnd : null;
+
+  renderInner();
+
+  if (activeId) {
+    const el = document.getElementById(activeId);
+    if (el && typeof el.focus === 'function') {
+      el.focus();
+      if (selStart !== null && el.setSelectionRange) {
+        try { el.setSelectionRange(selStart, selEnd); } catch (e) {}
+      }
+    }
+  }
+}
+
+// ---------- Data actions ----------
+async function loadComics() {
+  try {
+    const all = await dbGetAll();
+    all.sort((a, b) => (b.dateAdded || 0) - (a.dateAdded || 0));
+    setState({ comics: all, loading: false });
+  } catch (e) {
+    setState({ loading: false, storageError: true });
+  }
+}
+
+async function saveComic(comic) {
+  try {
+    await dbPut(comic);
+    setState({ storageError: false });
+    await loadComics();
+  } catch (e) {
+    setState({ storageError: true });
+  }
+}
+
+async function deleteComicById(id) {
+  try {
+    await dbDelete(id);
+    await loadComics();
+  } catch (e) {
+    setState({ storageError: true });
+  }
+  setState({ confirmDeleteId: null });
+}
+
+// ---------- Form handlers ----------
+function openAdd() { setState({ form: emptyForm(), editingId: null, showForm: true, scannedPreview: null, scanError: '' }); }
+function openEdit(comic) {
+  setState({
+    form: { title: comic.title, issueNumber: comic.issueNumber, publisher: comic.publisher, year: comic.year,
+      grade: comic.grade, value: comic.value, keyIssue: comic.keyIssue, notes: comic.notes || '', coverImage: comic.coverImage || null },
+    editingId: comic.id, showForm: true, scannedPreview: comic.coverImage || null, scanError: ''
+  });
+}
+function closeForm() { setState({ showForm: false, editingId: null, form: emptyForm(), scannedPreview: null, scanError: '' }); }
+
+function updateFormField(field, value) {
+  state.form[field] = value; // no re-render needed for text inputs beyond what's already there
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  if (!state.form.title || !state.form.title.trim()) return;
+  const base = { ...state.form };
+  if (state.editingId) {
+    const existing = state.comics.find(c => c.id === state.editingId);
+    await saveComic({ ...existing, ...base, id: state.editingId });
+  } else {
+    await saveComic({ ...base, id: uid(), dateAdded: Date.now() });
+  }
+  closeForm();
+}
+
+// ---------- Cover scan (uses user's own Anthropic API key) ----------
+function triggerScan() {
+  if (!state.apiKey) {
+    setState({ scanError: 'Add your Anthropic API key in Settings first to use cover scanning.' });
+    return;
+  }
+  setState({ scanError: '' });
+  document.getElementById('cover-file-input').click();
+}
+
+async function handleFileSelected(e) {
+  const file = e.target.files && e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+
+  setState({ scanning: true, scanError: '' });
+
+  try {
+    const base64Data = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = () => reject(new Error('read failed'));
+      reader.readAsDataURL(file);
+    });
+    const dataUrl = `data:${file.type};base64,${base64Data}`;
+    state.scannedPreview = dataUrl;
+    state.form.coverImage = dataUrl;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': state.apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: base64Data } },
+            { type: 'text', text: `Look at this photo of a comic book cover. Identify it and respond with ONLY a raw JSON object, no markdown fences, no preamble, no explanation. Use this exact shape:
+{"title": "series title without issue number", "issueNumber": "just the number, no #", "publisher": "publisher name", "year": "4-digit cover year if visible or known, else empty string", "keyIssue": true or false (true only if this is a well-known first appearance, origin, or otherwise significant key issue), "notes": "one short sentence, e.g. first appearance info, empty string if nothing notable"}
+If you cannot identify a field confidently, use an empty string for it (or false for keyIssue). Do not guess condition/grade or monetary value — leave those out of the object entirely.` }
+          ]
+        }]
+      })
+    });
+
+    if (!response.ok) {
+      const errBody = await response.text();
+      throw new Error(`API error ${response.status}: ${errBody.slice(0, 200)}`);
+    }
+
+    const data = await response.json();
+    const textBlock = (data.content || []).map(b => b.text || '').join('');
+    const cleaned = textBlock.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+
+    state.form.title = parsed.title || state.form.title;
+    state.form.issueNumber = parsed.issueNumber || state.form.issueNumber;
+    state.form.publisher = parsed.publisher || state.form.publisher;
+    state.form.year = parsed.year || state.form.year;
+    state.form.keyIssue = typeof parsed.keyIssue === 'boolean' ? parsed.keyIssue : state.form.keyIssue;
+    state.form.notes = parsed.notes || state.form.notes;
+
+    setState({ scanning: false, showForm: true });
+  } catch (err) {
+    console.error(err);
+    setState({
+      scanning: false,
+      scanError: "Couldn't read that cover — check your API key in Settings, or try a straighter, better-lit shot."
+    });
+  }
+}
+
+async function handlePhotoOnlySelected(e) {
+  const file = e.target.files && e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+
+  try {
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('read failed'));
+      reader.readAsDataURL(file);
+    });
+    state.form.coverImage = dataUrl;
+    setState({ scannedPreview: dataUrl, scanError: '' });
+  } catch (err) {
+    setState({ scanError: "Couldn't load that photo — try again." });
+  }
+}
+
+// ---------- Settings ----------
+function openSettings() { setState({ showSettings: true }); }
+function closeSettings() { setState({ showSettings: false }); }
+function saveApiKey(key) {
+  localStorage.setItem('cc-api-key', key.trim());
+  setState({ apiKey: key.trim(), showSettings: false });
+}
+
+// ---------- Derived data ----------
+function getFiltered() {
+  let list = state.comics.slice();
+  if (state.query.trim()) {
+    const q = state.query.toLowerCase();
+    list = list.filter(c =>
+      (c.title || '').toLowerCase().includes(q) ||
+      (c.publisher || '').toLowerCase().includes(q) ||
+      (c.issueNumber || '').toLowerCase().includes(q)
+    );
+  }
+  if (state.keyOnly) list = list.filter(c => c.keyIssue);
+  if (state.sortBy === 'title') list.sort((a, b) => a.title.localeCompare(b.title));
+  else if (state.sortBy === 'value') list.sort((a, b) => (parseFloat(b.value) || 0) - (parseFloat(a.value) || 0));
+  else if (state.sortBy === 'year') list.sort((a, b) => (parseInt(b.year) || 0) - (parseInt(a.year) || 0));
+  else list.sort((a, b) => (b.dateAdded || 0) - (a.dateAdded || 0));
+  return list;
+}
+
+function getStats() {
+  const total = state.comics.length;
+  const value = state.comics.reduce((sum, c) => sum + (parseFloat(c.value) || 0), 0);
+  const keys = state.comics.filter(c => c.keyIssue).length;
+  return { total, value, keys };
+}
+
+// ---------- Render ----------
+function renderInner() {
+  const app = document.getElementById('app');
+  const stats = getStats();
+  const filtered = getFiltered();
+
+  app.innerHTML = `
+    <header class="header">
+      <div class="halftone" style="position:absolute;inset:0;opacity:0.1;pointer-events:none;"></div>
+      <div class="header-inner">
+        <div>
+          <h1>COLLECTION CLOSET</h1>
+          <p class="tagline">your back-issue collection</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <button class="settings-link" id="btn-settings" style="color:#EDE4D2;">${ICONS.gear}</button>
+        </div>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-box"><div class="num">${stats.total}</div><div class="lbl">Issues</div></div>
+        <div class="stat-box"><div class="num">$${stats.value.toFixed(0)}</div><div class="lbl">Value</div></div>
+        <div class="stat-box"><div class="num">${stats.keys}</div><div class="lbl">Key Issues</div></div>
+      </div>
+    </header>
+
+    ${state.storageError ? `<div class="toast-error">Couldn't save changes right now — they may not persist. Try again in a moment.</div>` : ''}
+
+    <div class="controls">
+      <div class="search-wrap">
+        ${ICONS.search}
+        <input id="search-input" type="text" placeholder="Search title, publisher, issue #..." value="${escapeHtml(state.query)}" />
+      </div>
+      <div class="filter-row">
+        <select id="sort-select">
+          <option value="added" ${state.sortBy==='added'?'selected':''}>Recently Added</option>
+          <option value="title" ${state.sortBy==='title'?'selected':''}>Title A–Z</option>
+          <option value="value" ${state.sortBy==='value'?'selected':''}>Value High–Low</option>
+          <option value="year" ${state.sortBy==='year'?'selected':''}>Year New–Old</option>
+        </select>
+        <button class="key-toggle ${state.keyOnly ? 'active' : ''}" id="key-toggle">
+          ${ICONS.star(state.keyOnly)} Key Issues Only
+        </button>
+      </div>
+    </div>
+
+    <div class="list-wrap">
+      ${state.loading ? `<div style="text-align:center;padding:4rem 0;font-size:0.875rem;opacity:0.6;">Loading your collection…</div>` :
+        filtered.length === 0 ? renderEmptyState() : renderGrid(filtered)}
+    </div>
+
+    <input id="cover-file-input-live" type="file" accept="image/*" capture="environment" class="hidden" />
+    <input id="photo-only-input-live" type="file" accept="image/*" capture="environment" class="hidden" />
+
+    ${!state.showForm && state.scanning ? `<div class="toast">${ICONS.loader(14)} Reading cover…</div>` : ''}
+    ${!state.showForm && state.scanError ? `<div class="toast-scan-error">${ICONS.alert} ${escapeHtml(state.scanError)}</div>` : ''}
+
+    <div class="fab-wrap">
+      <button class="fab-scan" id="btn-scan" ${state.scanning ? 'disabled' : ''} title="Scan a cover to auto-fill">
+        ${state.scanning ? ICONS.loader(20) : ICONS.camera(20)}
+      </button>
+      <button class="fab-add" id="btn-add" aria-label="Add comic">${ICONS.plus}</button>
+    </div>
+
+    ${state.showForm ? renderFormModal() : ''}
+    ${state.showSettings ? renderSettingsModal() : ''}
+  `;
+
+  attachEvents();
+}
+
+function renderEmptyState() {
+  if (state.comics.length === 0) {
+    return `<div class="empty-state">${ICONS.book(28)}<p class="empty-title">YOUR COLLECTION IS EMPTY</p><p class="empty-sub">Tap the + button to add your first comic.</p></div>`;
+  }
+  return `<div class="empty-state">${ICONS.book(28)}<p class="empty-sub">No comics match your search.</p></div>`;
+}
+
+function renderGrid(list) {
+  return `<div class="grid">${list.map(renderCard).join('')}</div>`;
+}
+
+function renderCard(comic) {
+  const isConfirming = state.confirmDeleteId === comic.id;
+  return `
+    <div class="card" data-id="${comic.id}">
+      ${comic.coverImage ? `<img class="card-cover" src="${comic.coverImage}" alt="${escapeHtml(comic.title)} cover" />` : ''}
+      ${comic.keyIssue ? `<div class="key-badge stamp">${ICONS.award}<span>KEY</span></div>` : ''}
+      <div class="card-title-wrap">
+        <h3 class="card-title">${escapeHtml(comic.title)}</h3>
+        <p class="card-meta">${comic.issueNumber ? '#' + escapeHtml(comic.issueNumber) : ''}${comic.year ? ' · ' + escapeHtml(comic.year) : ''}</p>
+        ${comic.publisher ? `<p class="card-pub">${escapeHtml(comic.publisher)}</p>` : ''}
+      </div>
+      <div class="card-bottom">
+        <span class="grade-pill ${gradeClass(comic.grade)}">${GRADE_SHORT[comic.grade] || comic.grade || ''}</span>
+        ${comic.value ? `<span class="card-value">${ICONS.dollar}${parseFloat(comic.value).toFixed(2)}</span>` : ''}
+      </div>
+      ${comic.notes ? `<p class="card-notes">${escapeHtml(comic.notes)}</p>` : ''}
+      <div class="card-actions">
+        <button class="btn-edit" data-action="edit" data-id="${comic.id}">${ICONS.pencil} Edit</button>
+        ${isConfirming
+          ? `<button class="btn-confirm-delete" data-action="confirm-delete" data-id="${comic.id}">Confirm?</button>`
+          : `<button class="btn-delete" data-action="ask-delete" data-id="${comic.id}">${ICONS.trash}</button>`}
+      </div>
+    </div>
+  `;
+}
+
+function renderFormModal() {
+  const f = state.form;
+  return `
+    <div class="modal-overlay" id="form-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>${state.editingId ? 'EDIT COMIC' : 'ADD COMIC'}</h2>
+          <button class="modal-close" id="btn-close-form">${ICONS.x}</button>
+        </div>
+        <form class="modal-form" id="comic-form">
+          <div class="scan-box">
+            ${state.scannedPreview
+              ? `<img class="scan-preview" src="${state.scannedPreview}" alt="Cover photo" />`
+              : `<div class="scan-placeholder">${ICONS.book(18)}</div>`}
+            <div class="scan-info">
+              <p>${state.scanning ? 'Reading cover…' : state.scannedPreview ? 'Cover photo attached' : 'Add a cover photo'}</p>
+              <div style="display:flex;gap:0.375rem;flex-wrap:wrap;margin-top:0.375rem;">
+                <button type="button" class="scan-btn" id="btn-scan-inline" ${state.scanning ? 'disabled' : ''}>
+                  ${state.scanning ? ICONS.loader(12) : ICONS.camera(12)} ${state.scannedPreview ? 'Rescan & auto-fill' : 'Scan & auto-fill'}
+                </button>
+                <button type="button" class="scan-btn" id="btn-photo-only" ${state.scanning ? 'disabled' : ''}>
+                  ${ICONS.camera(12)} ${state.scannedPreview ? 'Replace photo' : 'Just add photo'}
+                </button>
+              </div>
+              ${state.scanError ? `<p class="scan-err">${escapeHtml(state.scanError)}</p>` : ''}
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Title *</label>
+            <input required id="f-title" type="text" value="${escapeHtml(f.title)}" placeholder="Amazing Spider-Man" />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>Issue #</label>
+              <input id="f-issue" type="text" value="${escapeHtml(f.issueNumber)}" placeholder="300" />
+            </div>
+            <div class="field">
+              <label>Year</label>
+              <input id="f-year" type="text" inputmode="numeric" value="${escapeHtml(f.year)}" placeholder="1988" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Publisher</label>
+            <input id="f-publisher" type="text" value="${escapeHtml(f.publisher)}" placeholder="Marvel Comics" />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>Condition</label>
+              <select id="f-grade">
+                ${GRADES.map(g => `<option value="${g}" ${f.grade===g?'selected':''}>${g}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label>Value ($)</label>
+              <input id="f-value" type="text" inputmode="decimal" value="${escapeHtml(f.value)}" placeholder="45.00" />
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="f-key" type="checkbox" ${f.keyIssue ? 'checked' : ''} />
+            <span>Mark as key issue</span>
+          </label>
+
+          <div class="field">
+            <label>Description</label>
+            <textarea id="f-notes" rows="2" placeholder="First appearance of..., signed, missing staples...">${escapeHtml(f.notes)}</textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">${state.editingId ? 'SAVE CHANGES' : 'ADD TO COLLECTION'}</button>
+        </form>
+      </div>
+    </div>
+  `;
+}
+
+function renderSettingsModal() {
+  return `
+    <div class="modal-overlay" id="settings-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>SETTINGS</h2>
+          <button class="modal-close" id="btn-close-settings">${ICONS.x}</button>
+        </div>
+        <div class="settings-body">
+          <div class="field">
+            <label>Anthropic API Key (for cover scanning)</label>
+            <input id="s-api-key" type="password" value="${escapeHtml(state.apiKey)}" placeholder="sk-ant-..." />
+          </div>
+          <p class="settings-note">
+            Cover scanning calls the Anthropic API directly from your browser using this key, which is stored only on this device (localStorage) — it's never sent anywhere else. Anyone with access to this device's browser storage could read it, so only use a key you're comfortable having on this device, and consider setting spending limits on it in the Anthropic Console. Scanning is optional — you can always add comics manually without a key.
+          </p>
+          <button type="button" class="submit-btn" id="btn-save-key">SAVE KEY</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ---------- Event wiring ----------
+function attachEvents() {
+  const $ = (id) => document.getElementById(id);
+
+  $('search-input') && $('search-input').addEventListener('input', (e) => setState({ query: e.target.value }));
+  $('sort-select') && $('sort-select').addEventListener('change', (e) => setState({ sortBy: e.target.value }));
+  $('key-toggle') && $('key-toggle').addEventListener('click', () => setState({ keyOnly: !state.keyOnly }));
+
+  $('btn-add') && $('btn-add').addEventListener('click', openAdd);
+  $('btn-scan') && $('btn-scan').addEventListener('click', triggerScan);
+  $('btn-scan-inline') && $('btn-scan-inline').addEventListener('click', triggerScan);
+  $('btn-settings') && $('btn-settings').addEventListener('click', openSettings);
+
+  const liveFileInput = $('cover-file-input-live');
+  if (liveFileInput) liveFileInput.addEventListener('change', handleFileSelected);
+  // re-point the global trigger to this live input
+  window.__scanInputEl = liveFileInput;
+
+  const photoOnlyInput = $('photo-only-input-live');
+  if (photoOnlyInput) photoOnlyInput.addEventListener('change', handlePhotoOnlySelected);
+  $('btn-photo-only') && $('btn-photo-only').addEventListener('click', () => photoOnlyInput && photoOnlyInput.click());
+
+  $('form-overlay') && $('form-overlay').addEventListener('click', (e) => { if (e.target.id === 'form-overlay') closeForm(); });
+  $('btn-close-form') && $('btn-close-form').addEventListener('click', closeForm);
+  $('comic-form') && $('comic-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    state.form.title = $('f-title').value;
+    state.form.issueNumber = $('f-issue').value;
+    state.form.year = $('f-year').value;
+    state.form.publisher = $('f-publisher').value;
+    state.form.grade = $('f-grade').value;
+    state.form.value = $('f-value').value;
+    state.form.keyIssue = $('f-key').checked;
+    state.form.notes = $('f-notes').value;
+    handleFormSubmit(e);
+  });
+
+  $('settings-overlay') && $('settings-overlay').addEventListener('click', (e) => { if (e.target.id === 'settings-overlay') closeSettings(); });
+  $('btn-close-settings') && $('btn-close-settings').addEventListener('click', closeSettings);
+  $('btn-save-key') && $('btn-save-key').addEventListener('click', () => saveApiKey($('s-api-key').value));
+
+  document.querySelectorAll('[data-action="edit"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const comic = state.comics.find(c => c.id === btn.dataset.id);
+      if (comic) openEdit(comic);
+    });
+  });
+  document.querySelectorAll('[data-action="ask-delete"]').forEach(btn => {
+    btn.addEventListener('click', () => setState({ confirmDeleteId: btn.dataset.id }));
+  });
+  document.querySelectorAll('[data-action="confirm-delete"]').forEach(btn => {
+    btn.addEventListener('click', () => deleteComicById(btn.dataset.id));
+  });
+}
+
+// override triggerScan to use the currently-rendered live input
+const _origTriggerScan = triggerScan;
+triggerScan = function() {
+  if (!state.apiKey) {
+    setState({ scanError: 'Add your Anthropic API key in Settings first to use cover scanning.' });
+    return;
+  }
+  setState({ scanError: '' });
+  if (window.__scanInputEl) window.__scanInputEl.click();
+};
+
+// ---------- Init ----------
+loadComics();
+render();
+
+
+</script>
+</body>
+</html>
